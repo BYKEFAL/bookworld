@@ -23,8 +23,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="firstapp/index.html"), name='index'),
+    # path('', TemplateView.as_view(template_name="firstapp/index.html"), name='index'),
+    path('', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('my_form/', views.my_form, name='my_form'),
     path('admin/', admin.site.urls),
-] + static(settings.STATIC_URL)
+] 
+
