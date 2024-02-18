@@ -7,6 +7,7 @@ from django import forms
 #     field_order = ['age', 'name'] - позволяет менять порядок следования полей формы
 
 class UserForm(forms.Form):
-    name = forms.CharField(label='Имя') 
-    age = forms.IntegerField(label='Возраст клиента')
-    comment = forms.CharField(label='Коментарий', widget=forms.Textarea) 
+    name = forms.CharField(label="Имя клиента",
+                           widget=forms.TextInput(attrs={"class": "myfield"}))
+    age = forms.IntegerField(label="Возраст клиента",
+                             widget=forms.NumberInput(attrs={"class": "myfield"}))
