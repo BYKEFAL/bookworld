@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from firstapp import views
 from django.conf import settings
@@ -28,6 +28,14 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('my_form/', views.my_form, name='my_form'),
+    path('my_form/edit_form/<int:id>/', views.edit_form,),
+    path('my_form/delete/<int:id>/', views.delete),
+    path('form_up_img/', views.form_up_img, name='form_up_img'),
+    path('form_up_img/delete_img/<int:id>/', views.delete_img),
     path('admin/', admin.site.urls),
 ] 
 
+# добавлено для работы с медиа файлами локально
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
